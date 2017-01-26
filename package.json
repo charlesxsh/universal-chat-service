@@ -1,0 +1,15 @@
+{
+  "name": "universal-chat-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^1.7.2",
+    "socket.io-redis": "^3.0.0"
+  }
+}
