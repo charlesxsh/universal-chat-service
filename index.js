@@ -7,7 +7,7 @@
  */
 const io = require('socket.io')(process.env.PORT || 8080);
 const socketredis = require('socket.io-redis');
-//io.adapter(socketredis('redis://localhost:6379'));
+io.adapter(socketredis(process.env.REDIS_URL));
 
 /**
  * Initialize UserStatusManager
@@ -16,7 +16,8 @@ const UserStatusManager = require('./UserStatusManager');
 const redis = require('redis');
 const bluebird = require("bluebird");
 bluebird.promisifyAll(redis.RedisClient.prototype);
-const userStatusClient = redis.createClient();
+//6380,'<name>.redis.cache.windows.net', {auth_pass: '<key>', tls: {servername: '<name>.redis.cache.windows.net'}}
+const userStatusClient = redis.createClient(process.env.REDIS_URL);
 const userManager = new UserStatusManager(userStatusClient);
 
 /**
