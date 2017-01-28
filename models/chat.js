@@ -7,9 +7,8 @@ let chatSchema = new mongoose.Schema({
     from:String,
     to:String,
     content:String,
+    is_read:Boolean,
     created_at:{ type: Date, default: new Date()},
-}, { collection: 'chats'});
+});
 
-let chat = mongoose.model('Chat', chatSchema);
-
-module.exports = chat;
+module.exports = mongoose.model('Chat', chatSchema,'chats');
